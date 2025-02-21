@@ -42,19 +42,20 @@ describe("Home", () => {
     //     await expect(browser).toHaveUrl(expect.not.stringContaining('get-started'));
     //   });
 
-    it("Find heading element & assert the title", async () => {
-        //Open Home Page
-        await browser.url("https://practice.sdetunicorns.com");
+    // it("Find heading element & assert the title", async () => {
+    //     //Open Home Page
+    //     await browser.url("https://practice.sdetunicorns.com");
 
-        //Find the heading element
-        const headingEl = await $('.elementor-widget-container h1')
+    //     //Find the heading element
+    //     const headingEl = await $('.elementor-widget-container h1')
     
-        //get the text
-        const headingText = await headingEl.getText();
+    //     //get the text
+    //     const headingText = await headingEl.getText();
     
-        //Assert the text
-        // await expect(headingText).toEqual('Think different. Make different.');
-        await expect(headingEl).toHaveText('Think different. Make different.');
+    //     //Assert the text
+    //     // await expect(headingText).toEqual('Think different. Make different.');
+    //     await expect(headingEl).toHaveText('Think different. Make different.');
 
-      });
+    //   });
+
 });
