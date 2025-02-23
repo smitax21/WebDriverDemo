@@ -1,4 +1,4 @@
-// Practice E-Commerce Site – SDET Unicorns
+// Practice E-Commerce Site – SDET Unicorns 
 // https://practice.sdetunicorns.com
 
 describe("Home", () => {
