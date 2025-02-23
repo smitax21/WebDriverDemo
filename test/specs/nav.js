@@ -1,6 +1,6 @@
 describe('Navigation Menu', () =>{
     it('get the text of all menu item & asset them', async () =>{
-        await browser.url('/')
+        browser.url('/')
 
         const expectedLinks= [
             "Home",
@@ -12,6 +12,20 @@ describe('Navigation Menu', () =>{
         ]
 
         const actualLink = [];
+
+        //wait command while using asynchronous 
+        await $('#zak-primary-menu').waitForDisplayed({ timeout: 1000});
+        await $('#zak-primary-menu li').waitForClickable({ timeout: 1000});
+
+        //wait until the 'home' text is displayed on the navigation menu
+        await browser.waitUntil(async function() {
+            const homeText = await $('#zak-primary-menu li').getText();
+            return homeText === "Home"; //true or false
+        }, {
+            timeout: 5000,
+            timeoutMsg: 'Could not verify the Home text from #zak-primary-menu li'
+        })
+
 
         //Two ways of doing it
         //first method
