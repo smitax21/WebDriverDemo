@@ -1,10 +1,9 @@
-// Practice E-Commerce Site – SDET Unicorns 
-// https://practice.sdetunicorns.com
+import HomePage from "../pages/home-page";
 
 describe("Home", () => {
   it("Open URL & assert title", async () => {
     //Open Url
-    await browser.url("https://practice.sdetunicorns.com");
+    await HomePage.open();
 
     //Assert title
     await expect(browser).toHaveTitle(
@@ -22,40 +21,38 @@ describe("Home", () => {
 
   it("Click get started button & Asser url contain get started text", async () => {
     //Open Home Page
-    await browser.url("https://practice.sdetunicorns.com");
+    await HomePage.open();
 
     //Click get started
-    await $('#get-started').click();
+    await HomePage.btnGetStarted.click();
 
     //Assert Url contains get started text
-    await expect(browser).toHaveUrl(expect.stringContaining('get-started'));
+    await expect(browser).toHaveUrl(expect.stringContaining("get-started"));
   });
 
-    it("Click logo & Asser url does not contain get started text", async () => {
-        //Open Home Page
-        await browser.url("https://practice.sdetunicorns.com");
-    
-        //Click get started
-        await $('.custom-logo-link').click();
-    
-        //Assert Url contains get started text
-        await expect(browser).toHaveUrl(expect.not.stringContaining('get-started'));
-      });
+  it("Click logo & Asser url does not contain get started text", async () => {
+    //Open Home Page
+    await HomePage.open();
 
-    it("Find heading element & assert the title", async () => {
-        //Open Home Page
-        await browser.url("https://practice.sdetunicorns.com");
+    //Click get started
+    await HomePage.imageLogo.click();
 
-        //Find the heading element
-        const headingEl = await $('.elementor-widget-container h1')
-    
-        //get the text
-        const headingText = await headingEl.getText();
-    
-        //Assert the text
-        // await expect(headingText).toEqual('Think different. Make different.');
-        await expect(headingEl).toHaveText('Think different. Make different.');
+    //Assert Url contains get started text
+    await expect(browser).toHaveUrl(expect.not.stringContaining("get-started"));
+  });
 
-      });
+  it("Find heading element & assert the title", async () => {
+    //Open Home Page
+    await HomePage.open();
 
+    //Find the heading element
+    const headingEl = await HomePage.txtHeading;
+
+    //get the text
+    const headingText = await headingEl.getText();
+
+    //Assert the text
+    // await expect(headingText).toEqual('Think different. Make different.');
+    await expect(headingEl).toHaveText("Think different. Make different.");
+  });
 });
