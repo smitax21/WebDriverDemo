@@ -1,9 +1,11 @@
+import BlogComponent from '../pages/components/blog-comp'
+
 describe('', () => {
     it('Get the lists of Recent Post & Assert the text', async () => {
-        await browser.url('/blog');
-
+        await BlogComponent.open();
+        
         //Get the Recent Post List Element
-        const list = await $$('#recent-posts-3 ul li')
+        const list = BlogComponent.recentPost;
 
         //loop through
         for( const item of list){

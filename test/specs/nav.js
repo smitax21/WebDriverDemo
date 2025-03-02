@@ -1,6 +1,9 @@
+import HomePage from '../pages/home-page'
+
 describe('Navigation Menu', () =>{
     it('get the text of all menu item & asset them', async () =>{
-        browser.url('/')
+
+        await HomePage.open();
 
         const expectedLinks= [
             "Home",
@@ -19,7 +22,7 @@ describe('Navigation Menu', () =>{
 
         //wait until the 'home' text is displayed on the navigation menu
         await browser.waitUntil(async function() {
-            const homeText = await $('#zak-primary-menu li').getText();
+            const homeText = await HomePage.NavComponent.firstNavMenuList.getText();
             return homeText === "Home"; //true or false
         }, {
             timeout: 5000,
@@ -31,7 +34,7 @@ describe('Navigation Menu', () =>{
         //first method
         // const navLinks = await $('#zak-primary-menu').$$('li')
         //second method by allowing double dollar and passing all the selectors
-        const navLinks = await $$('#zak-primary-menu li')
+        const navLinks = await HomePage.NavComponent.linksNavMenu;
 
 
         for (const link of navLinks) {
