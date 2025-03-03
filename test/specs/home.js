@@ -1,10 +1,29 @@
 import HomePage from "../pages/home-page";
 
 describe("Home", () => {
-  it("Open URL & assert title", async () => {
+  // before(async () => {
+  //   console.log("This is from Home Page.js");
+  // });
+
+  beforeEach(async () => {
+    console.log("This runs before each test");
+
     //Open Url
     await HomePage.open();
+  });
 
+  // after(async () => {
+  //   console.log("This could be used for test cleanup");
+  // });
+
+  // afterEach(async () => {
+  //   console.log("This runs after each test");
+
+  //   //Open Url
+  //   await HomePage.open();
+  // });
+
+  it("Open URL & assert title", async () => {
     //Assert title
     await expect(browser).toHaveTitle(
       "Practice E-Commerce Site – SDET Unicorns"
@@ -20,9 +39,6 @@ describe("Home", () => {
   });
 
   it("Click get started button & Asser url contain get started text", async () => {
-    //Open Home Page
-    await HomePage.open();
-
     //Click get started
     await HomePage.btnGetStarted.click();
 
@@ -31,9 +47,6 @@ describe("Home", () => {
   });
 
   it("Click logo & Asser url does not contain get started text", async () => {
-    //Open Home Page
-    await HomePage.open();
-
     //Click get started
     await HomePage.imageLogo.click();
 
@@ -42,9 +55,6 @@ describe("Home", () => {
   });
 
   it("Find heading element & assert the title", async () => {
-    //Open Home Page
-    await HomePage.open();
-
     //Find the heading element
     const headingEl = await HomePage.txtHeading;
 
