@@ -1,4 +1,5 @@
 import HomePage from "../pages/home-page";
+import AllureReporter from "@wdio/allure-reporter";
 
 describe("Home", () => {
   // before(async () => {
@@ -24,6 +25,8 @@ describe("Home", () => {
   // });
 
   it("Open URL & assert title", async () => {
+    AllureReporter.addSeverity('minor')
+
     //Assert title
     await expect(browser).toHaveTitle(
       "Practice E-Commerce Site – SDET Unicorns"
@@ -47,6 +50,8 @@ describe("Home", () => {
   });
 
   it("Click logo & Asser url does not contain get started text", async () => {
+    AllureReporter.addFeature('Logo verification')
+    
     //Click get started
     await HomePage.imageLogo.click();
 

@@ -5,7 +5,7 @@ describe("", () => {
   it("Check success message after submit & Assert them", async () => {
     await ContactComponent.open();
 
-    //Ensure fiels are loaded
+    //Ensure fields are loaded
     await ContactComponent.allFields.waitForDisplayed();
 
     await ContactComponent.submitForm(
